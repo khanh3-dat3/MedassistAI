@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedAssist AI - AI Health Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Dark/Light Mode Toggle -->
+    <div class="theme-toggle">
+        <button id="themeBtn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <span>MedAssist <strong>AI</strong></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Trang chủ</a></li>
+                <li><a href="#tools"><i class="fas fa-tools"></i> Công cụ</a></li>
+                <li><a href="#chatbot"><i class="fas fa-comment-medical"></i> Chatbot AI</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> Giới thiệu</a></li>
+            </ul>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1><span class="ai-text">AI</span> vì Sức khỏe Cộng đồng</h1>
+                <p>Công nghệ Trí tuệ Nhân tạo hỗ trợ đánh giá sức khỏe, phát hiện sớm nguy cơ và tư vấn y tế thông minh</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h3>100%</h3>
+                        <p>Miễn phí</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Hỗ trợ</p>
+                    </div>
+                    <div class="stat">
+                        <h3>AI</h3>
+                        <p>Thông minh</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/trivita-market.png" alt="AI Health Assistant">
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Tools Section -->
+    <section id="tools" class="tools-section">
+        <h2 class="section-title"><i class="fas fa-stethoscope"></i> Công cụ Đánh giá Sức khỏe</h2>
+        <p class="section-subtitle">Sử dụng các công cụ AI để tự đánh giá tình trạng sức khỏe của bạn</p>
+        
+        <div class="tools-grid">
+            <!-- BMI Calculator -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-weight-scale"></i>
+                </div>
+                <h3>BMI Calculator</h3>
+                <p>Tính chỉ số khối cơ thể và đánh giá tình trạng cân nặng</p>
+                
+                <div class="tool-form">
+                    <div class="input-group">
+                        <label for="height"><i class="fas fa-ruler-vertical"></i> Chiều cao (cm)</label>
+                        <input type="number" id="height" placeholder="Ví dụ: 170">
+                    </div>
+                    <div class="input-group">
+                        <label for="weight"><i class="fas fa-weight-hanging"></i> Cân nặng (kg)</label>
+                        <input type="number" id="weight" placeholder="Ví dụ: 65">
+                    </div>
+                    <button id="calculateBMI" class="btn-primary">
+                        <i class="fas fa-calculator"></i> Tính BMI
+                    </button>
+                </div>
+                
+                <div id="bmiResult" class="result-box hidden">
+                    <h4>Kết quả BMI: <span id="bmiValue">0</span></h4>
+                    <p id="bmiCategory">Phân loại: </p>
+                    <div class="bmi-bar">
+                        <div class="bmi-indicator" id="bmiIndicator"></div>
+                    </div>
+                    <div class="bmi-labels">
+                        <span>Thiếu cân</span>
+                        <span>Bình thường</span>
+                        <span>Thừa cân</span>
+                        <span>Béo phì</span>
+                    </div>
+                    <div id="bmiAdvice" class="advice-box"></div>
+                </div>
+            </div>
+
+            <!-- Heart Rate Assessment -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+                <h3>Đánh giá Nhịp tim</h3>
+                <p>Kiểm tra nhịp tim theo độ tuổi và mức độ hoạt động</p>
+                
+                <div class="tool-form">
+                    <div class="input-group">
+                        <label for="age"><i class="fas fa-user"></i> Tuổi</label>
+                        <input type="number" id="age" placeholder="Ví dụ: 25">
+                    </div>
+                    <div class="input-group">
+                        <label for="heartRate"><i class="fas fa-heart"></i> Nhịp tim (bpm)</label>
+                        <input type="number" id="heartRate" placeholder="Ví dụ: 72">
+                    </div>
+                    <div class="input-group">
+                        <label for="activity"><i class="fas fa-person-running"></i> Mức độ hoạt động</label>
+                        <select id="activity">
+                            <option value="low">Ít vận động</option>
+                            <option value="medium">Vận động vừa</option>
+                            <option value="high">Vận động nhiều</option>
+                            <option value="athlete">Vận động viên</option>
+                        </select>
+                    </div>
+                    <button id="checkHeart" class="btn-primary">
+                        <i class="fas fa-heart-circle-check"></i> Kiểm tra
+                    </button>
+                </div>
+                
+                <div id="heartResult" class="result-box hidden">
+                    <h4>Kết quả: <span id="heartStatus">Bình thường</span></h4>
+                    <p id="heartDetail">Nhịp tim của bạn nằm trong khoảng bình thường</p>
+                    <div class="heart-chart">
+                        <div class="chart-bar" id="heartBar"></div>
+                    </div>
+                    <div id="heartAdvice" class="advice-box"></div>
+                </div>
+            </div>
+
+            <!-- Health History -->
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>Lịch sử Sức khỏe</h3>
+                <p>Theo dõi và lưu trữ kết quả đánh giá của bạn</p>
+                
+                <div id="healthHistory" class="history-container">
+                    <p class="empty-history">Chưa có lịch sử đánh giá. Hãy sử dụng các công cụ trên!</p>
+                </div>
+                
+                <button id="clearHistory" class="btn-secondary">
+                    <i class="fas fa-trash"></i> Xóa lịch sử
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section id="chatbot" class="chatbot-section">
+        <h2 class="section-title"><i class="fas fa-robot"></i> Chatbot Tư vấn Sức khỏe AI</h2>
+        <p class="section-subtitle">Hỏi đáp triệu chứng và nhận tư vấn ban đầu từ AI</p>
+        
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <div class="doctor-avatar">
+                    <img src="assets/doctor-avatar.jpg" alt="Bác sĩ AI">
+                    <div class="online-status"></div>
+                </div>
+                <div class="doctor-info">
+                    <h3>Dr. AI Assistant</h3>
+                    <p>Chuyên gia AI y tế • Trực tuyến</p>
+                </div>
+                <button id="voiceToggle" class="voice-btn">
+                    <i class="fas fa-microphone"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <p>Xin chào! Tôi là Dr. AI Assistant. Tôi có thể giúp bạn tư vấn về các triệu chứng sức khỏe thông thường. Hãy mô tả triệu chứng của bạn!</p>
+                    <span class="message-time">10:00 AM</span>
+                </div>
+            </div>
+            
+            <div class="quick-questions">
+                <button class="quick-btn" data-question="Tôi bị đau đầu và mệt mỏi">Đau đầu & mệt mỏi</button>
+                <button class="quick-btn" data-question="Ho và đau họng nên làm gì">Ho & đau họng</button>
+                <button class="quick-btn" data-question="Triệu chứng sốt và ớn lạnh">Sốt & ớn lạnh</button>
+                <button class="quick-btn" data-question="Đau bụng và buồn nôn">Đau bụng & buồn nôn</button>
+            </div>
+            
+            <div class="chatbot-input">
+                <input type="text" id="userInput" placeholder="Nhập triệu chứng hoặc câu hỏi của bạn...">
+                <button id="sendMessage" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-disclaimer">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Lưu ý:</strong> Đây là hệ thống AI hỗ trợ thông tin ban đầu. Vui lòng tham khảo ý kiến bác sĩ cho chẩn đoán chính xác.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">Về MedAssist AI</h2>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3><i class="fas fa-crosshairs"></i> Sứ mệnh của chúng tôi</h3>
+                <p>Chúng tôi không chỉ là giải quyết vấn đề mà còn là trao quyền cho
+con người để họ chủ động kiến tạo cuộc sống tốt đẹp hơn</p>
+                <p>1. Tập trung vào giá trị thật – sản phẩm thật</p>
+                <p>Trivita AI cam kết phát triển công nghệ dựa trên những giá trị thực tiễn,
+tạo ra sản phẩm có khả năng giải quyết vấn đề xã hội thay vì chạy theo
+xu hướng hay hình thức.</p>
+                <p>2. Xây dựng hệ sinh thái AI toàn diện</p>
+                <p>Chúng tôi kết hợp ba lĩnh vực quan trọng: y tế – nghề nghiệp – tâm lý, để
+kiến tạo một hệ sinh thái liên ngành, hỗ trợ con người toàn diện từ sức
+khỏe thể chất, tinh thần đến sự phát triển cá nhân.</p>
+                <p>3. Người đồng hành đáng tin cậy</p>
+                <p>Trivita AI định hình vai trò là một người bạn đồng hành, cung cấp công
+cụ để mỗi cá nhân tự chủ hơn và giúp các chuyên gia làm việc hiệu quả
+hơn – chứ không thay thế những vị trí quan trọng trong xã hội.</p>
+                <h3><i class="fas fa-shield-alt"></i> Cam kết</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>Bảo mật:</strong> Dữ liệu được lưu trữ cục bộ, không gửi lên server</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Chính xác:</strong> Dựa trên các nghiên cứu y khoa và tiêu chuẩn WHO</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Nhân văn:</strong> AI hỗ trợ - không thay thế bác sĩ</li>
+                </ul>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-brain"></i>
+                <span>MedAssist <strong>AI</strong></span>
+                <p>AI vì Sức khỏe Cộng đồng Việt Nam</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Liên kết</h4>
+                <a href="#home">Trang chủ</a>
+                <a href="#tools">Công cụ</a>
+                <a href="#chatbot">Chatbot AI</a>
+                <a href="#about">Giới thiệu</a>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Thông tin</h4>
+                <p><i class="fas fa-user-graduate"></i> <strong>Developer:</strong> Lê Khánh Đạt</p>
+                <p><i class="fas fa-envelope"></i> dat480053@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 0395 480 053</p>
+                <p><i class="fas fa-university"></i> Học viện Hàng không Việt Nam</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Khánh Đạt.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
